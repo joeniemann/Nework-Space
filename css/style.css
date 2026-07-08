@@ -256,7 +256,8 @@ a { -webkit-tap-highlight-color:transparent; }
 /* ---------- footer ---------- */
 .site-footer { font-size:1rem; color:#F8F9F2; background:rgba(0,0,0,0.85); padding:72px 48px 32px; }
 .footer-grid { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:48px; }
-.footer-brand-name { font-family:'quador-display',serif; font-weight:700; font-size:19px; margin-bottom:14px; }
+.footer-brand-logo { display:block; width:220px; height:auto; margin-bottom:14px; }
+.footer-brand-tagline { font-size:9px; letter-spacing:-0.3px; text-transform:uppercase; color:#9A9C96; margin-bottom:18px; white-space:nowrap; }
 .footer-brand-text { font-size:14px; color:#C9CBC5; line-height:1.6; max-width:280px; }
 .footer-heading { font-weight:700; font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:#9A9C96; margin-bottom:16px; }
 .footer-links { display:flex; flex-direction:column; gap:10px; font-size:14px; }
