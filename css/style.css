@@ -31,7 +31,9 @@ a { -webkit-tap-highlight-color:transparent; }
   display:flex; align-items:center; justify-content:space-between;
   padding:12px 48px; background:#FFFFFF; border-bottom:1px solid rgba(8,10,10,0.06);
 }
-.nav-bar img { height:48px; width:auto; display:block; }
+.nav-brand { display:flex; flex-direction:column; }
+.nav-brand img { width:260px; height:auto; display:block; }
+.nav-brand-tagline { font-size:8.25px; letter-spacing:0.1px; text-transform:uppercase; color:#6E7072; white-space:nowrap; margin-top:8px; }
 .nav-links { display:flex; gap:36px; align-items:center; }
 .nav-links a { text-decoration:none; color:#080A0A; font-size:14px; font-weight:500; transition:color 150ms; }
 .nav-links a:hover { color:#F15A26; }
