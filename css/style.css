@@ -117,6 +117,11 @@ a { -webkit-tap-highlight-color:transparent; }
 .hero-stat-num { font-family:'quador-display',serif; font-weight:700; font-size:26px; color:#207028; }
 .hero-stat-label { font-size:12px; color:#6E7072; margin-top:4px; }
 
+/* offset anchor-link scroll targets so headings clear the fixed nav bar */
+#membership, #about, #process, #locations, #services, #testimonials, #contact {
+  scroll-margin-top:100px;
+}
+
 /* ---------- membership ---------- */
 .membership { font-size:1rem; color:#080A0A; padding:100px 48px; background:#FFFFFF; position:relative; overflow:hidden; }
 .membership-inner { max-width:1100px; margin:0 auto; position:relative; }
