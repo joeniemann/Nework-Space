@@ -298,7 +298,7 @@ a { -webkit-tap-highlight-color:transparent; }
 
 /* ---------- scroll-to-top progress button ---------- */
 .scroll-progress { position:fixed; right:24px; bottom:24px; width:56px; height:56px; z-index:1000; cursor:pointer; }
-.scroll-progress svg { transform:rotate(-90deg); }
+.scroll-progress-ring { transform:rotate(-90deg); }
 .scroll-progress-track { fill:#FFFFFF; stroke:#ECEADD; stroke-width:3; }
 .scroll-progress-bar { fill:none; stroke:#F15A26; stroke-width:3; stroke-linecap:round; transition:stroke-dashoffset 100ms linear; }
 .scroll-progress-label { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:12px; color:#080A0A; }
