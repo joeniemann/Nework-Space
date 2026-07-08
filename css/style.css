@@ -39,16 +39,8 @@ a { -webkit-tap-highlight-color:transparent; }
 
 .nav-links .nav-icon-link,
 .nav-links .nav-icon-cta { width:44px; height:44px; border-radius:999px; display:inline-flex; align-items:center; justify-content:center; }
-.icon-mask {
-  display:block; width:30px; height:30px; background-color:#080A0A;
-  -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat;
-  -webkit-mask-position:center; mask-position:center;
-  -webkit-mask-size:contain; mask-size:contain;
-  transition:background-color 150ms;
-}
-.icon-login { -webkit-mask-image:url('../images/login_icon.svg'); mask-image:url('../images/login_icon.svg'); }
-.icon-create { -webkit-mask-image:url('../images/create-acct_icon.svg'); mask-image:url('../images/create-acct_icon.svg'); }
-.nav-links a:hover .icon-mask { background-color:#F15A26; }
+.nav-icon-svg { display:block; width:40px; height:30px; color:#080A0A; transition:color 150ms; }
+.nav-links a:hover .nav-icon-svg { color:#F15A26; }
 
 /* ---------- hero ---------- */
 .hero-bg {
