@@ -36,6 +36,14 @@ a { -webkit-tap-highlight-color:transparent; }
 .nav-links a { text-decoration:none; color:#080A0A; font-size:14px; font-weight:500; }
 .nav-cta { background:#207028; color:#F8F9F2; font-size:14px; font-weight:600; padding:11px 22px; border-radius:999px; }
 
+.nav-links .nav-icon-link,
+.nav-links .nav-icon-cta { width:40px; height:40px; border-radius:999px; display:inline-flex; align-items:center; justify-content:center; transition:background 150ms; }
+.nav-links .nav-icon-link img,
+.nav-links .nav-icon-cta img { width:20px; height:20px; display:block; }
+.nav-links .nav-icon-link:hover { background:rgba(8,10,10,0.06); }
+.nav-links .nav-icon-cta { background:#207028; }
+.nav-links .nav-icon-cta:hover { background:#184f1e; }
+
 /* ---------- hero ---------- */
 .hero-bg {
   font-size:1rem; color:#FFFFFF; position:relative; z-index:2; height:900px;
