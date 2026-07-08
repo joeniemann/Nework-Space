@@ -1,6 +1,38 @@
 (function () {
   'use strict';
 
+  /* ---- horizontal slide menu ---- */
+  var menuToggle = document.querySelector('[data-menu-toggle]');
+  var menuPanel = document.querySelector('[data-menu-panel]');
+  if (menuToggle && menuPanel) {
+    var openMenu = function () {
+      menuPanel.classList.add('is-open');
+      menuToggle.setAttribute('aria-expanded', 'true');
+    };
+    var closeMenu = function () {
+      menuPanel.classList.remove('is-open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    };
+    menuToggle.addEventListener('click', function () {
+      if (menuPanel.classList.contains('is-open')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+    document.querySelectorAll('[data-menu-link]').forEach(function (link) {
+      link.addEventListener('click', closeMenu);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeMenu();
+    });
+    document.addEventListener('click', function (e) {
+      if (!menuPanel.classList.contains('is-open')) return;
+      if (menuPanel.contains(e.target) || menuToggle.contains(e.target)) return;
+      closeMenu();
+    });
+  }
+
   /* ---- hero entrance ---- */
   window.addEventListener('load', function () {
     setTimeout(function () {
