@@ -140,6 +140,9 @@ a { -webkit-tap-highlight-color:transparent; }
 .about-pattern { position:absolute; inset:0; background-image:url('../images/pattern-bg2.jpg'); background-size:cover; background-position:center; opacity:0.08; }
 .about-header { max-width:1100px; margin:0 auto; text-align:center; position:relative; }
 .about-mission { font-weight:700; font-size:42px; line-height:1.25; max-width:880px; margin:0 auto; }
+.about-vision-card { position:relative; max-width:600px; margin:68px auto 0; background:rgba(255,255,255,0.5); border-top:3px solid #F15A26; border-radius:0 0 12px 12px; padding:28px 40px; text-align:center; }
+.about-vision-card-label { font-family:'quador-display',serif; font-weight:600; font-size:1rem; letter-spacing:0.12em; text-transform:uppercase; color:#F15A26; margin-bottom:12px; }
+.about-vision-card-text { font-size:.9rem; color:#5A5D54; line-height:1.55; font-style:italic; }
 .about-grid { max-width:1100px; margin:80px auto 0; display:grid; grid-template-columns:repeat(3,1fr); gap:32px; position:relative; }
 .about-card { background:#FFFFFF; border-radius:14px; border:1px solid #ECEADD; overflow:hidden; }
 .about-img-wrap { overflow:hidden; position:relative; }
