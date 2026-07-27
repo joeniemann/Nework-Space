@@ -1,8 +1,7 @@
 (function () {
   'use strict';
 
-  /* ---- horizontal slide menu ---- */
-  var menuToggle = document.querySelector('[data-menu-toggle]');
+ var menuToggle = document.querySelector('[data-menu-toggle]');
   var menuPanel = document.querySelector('[data-menu-panel]');
   var navBar = document.querySelector('.nav-bar');
   if (menuToggle && menuPanel && navBar) {
@@ -13,17 +12,15 @@
     });
   }
 
-  /* ---- hero entrance ---- */
-  window.addEventListener('load', function () {
-    setTimeout(function () {
-      document.querySelectorAll('[data-hero-fade]').forEach(function (el) {
-        el.classList.add('in');
-      });
-    }, 60);
-  });
+ window.addEventListener('load', function () {
+   setTimeout(function () {
+     document.querySelectorAll('[data-hero-fade]').forEach(function (el) {
+       el.classList.add('in');
+     });
+   }, 60);
+ });
 
-  /* ---- reveal-on-scroll ---- */
-  var revealEls = document.querySelectorAll('[data-reveal]');
+ var revealEls = document.querySelectorAll('[data-reveal]');
   if (revealEls.length) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -36,36 +33,34 @@
     revealEls.forEach(function (el) { io.observe(el); });
   }
 
-  /* ---- scroll progress / back-to-top ---- */
-  var progressBtn = document.querySelector('[data-scroll-progress]');
+ var progressBtn = document.querySelector('[data-scroll-progress]');
   if (progressBtn) {
     var circle = progressBtn.querySelector('.scroll-progress-bar');
     var label = progressBtn.querySelector('.scroll-progress-label');
     var circumference = 2 * Math.PI * 24;
     circle.setAttribute('stroke-dasharray', circumference);
 
-    var onScroll = function () {
-      var doc = document.documentElement;
-      var scrollTop = doc.scrollTop || document.body.scrollTop;
-      var height = doc.scrollHeight - doc.clientHeight;
-      var pct = height > 0 ? Math.min(1, Math.max(0, scrollTop / height)) : 0;
-      circle.setAttribute('stroke-dashoffset', circumference * (1 - pct));
-      if (pct >= 0.995) {
-        label.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 13 L8 3 M3 7 L8 2 L13 7" stroke="#F15A26" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
-      } else {
-        label.textContent = Math.round(pct * 100) + '%';
-      }
-    };
+  var onScroll = function () {
+    var doc = document.documentElement;
+    var scrollTop = doc.scrollTop || document.body.scrollTop;
+    var height = doc.scrollHeight - doc.clientHeight;
+    var pct = height > 0 ? Math.min(1, Math.max(0, scrollTop / height)) : 0;
+    circle.setAttribute('stroke-dashoffset', circumference * (1 - pct));
+    if (pct >= 0.995) {
+      label.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 13 L8 3 M3 7 L8 2 L13 7" stroke="#F15A26" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
+    } else {
+      label.textContent = Math.round(pct * 100) + '%';
+    }
+  };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
-    progressBtn.addEventListener('click', function () {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+  progressBtn.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
   }
 
-  /* ---- membership carousel ---- */
-  var memTrack = document.querySelector('[data-mem-track]');
+ var memTrack = document.querySelector('[data-mem-track]');
   if (memTrack) {
     var memPages = memTrack.querySelectorAll('.mem-page');
     var memPageCount = memPages.length;
@@ -74,17 +69,17 @@
     var memNextBtn = document.querySelector('[data-mem-next]');
     var memLabel = document.querySelector('[data-mem-page-label]');
 
-    memTrack.style.width = (memPageCount * 100) + '%';
+  memTrack.style.width = (memPageCount * 100) + '%';
     memPages.forEach(function (p) { p.style.flexBasis = (100 / memPageCount) + '%'; });
 
-    function renderMem() {
-      memTrack.style.transform = 'translateX(-' + (memPage * (100 / memPageCount)) + '%)';
-      memPrevBtn.disabled = memPage === 0;
-      memNextBtn.disabled = memPage === memPageCount - 1;
-      memPrevBtn.style.opacity = memPage === 0 ? 0.35 : 1;
-      memNextBtn.style.opacity = memPage === memPageCount - 1 ? 0.35 : 1;
-      memLabel.textContent = (memPage + 1) + ' / ' + memPageCount;
-    }
+  function renderMem() {
+    memTrack.style.transform = 'translateX(-' + (memPage * (100 / memPageCount)) + '%)';
+    memPrevBtn.disabled = memPage === 0;
+    memNextBtn.disabled = memPage === memPageCount - 1;
+    memPrevBtn.style.opacity = memPage === 0 ? 0.35 : 1;
+    memNextBtn.style.opacity = memPage === memPageCount - 1 ? 0.35 : 1;
+    memLabel.textContent = (memPage + 1) + ' / ' + memPageCount;
+  }
     memPrevBtn.addEventListener('click', function () {
       memPage = Math.max(0, memPage - 1);
       renderMem();
@@ -96,8 +91,38 @@
     renderMem();
   }
 
-  /* ---- testimonials carousel ---- */
-  var testRoot = document.querySelector('[data-testimonials]');
+ var mtgTrack = document.querySelector('[data-mtg-track]');
+  if (mtgTrack) {
+    var mtgPages = mtgTrack.querySelectorAll('.mem-page');
+    var mtgPageCount = mtgPages.length;
+    var mtgPage = 0;
+    var mtgPrevBtn = document.querySelector('[data-mtg-prev]');
+    var mtgNextBtn = document.querySelector('[data-mtg-next]');
+    var mtgLabel = document.querySelector('[data-mtg-page-label]');
+
+  mtgTrack.style.width = (mtgPageCount * 100) + '%';
+    mtgPages.forEach(function (p) { p.style.flexBasis = (100 / mtgPageCount) + '%'; });
+
+  function renderMtg() {
+    mtgTrack.style.transform = 'translateX(-' + (mtgPage * (100 / mtgPageCount)) + '%)';
+    mtgPrevBtn.disabled = mtgPage === 0;
+    mtgNextBtn.disabled = mtgPage === mtgPageCount - 1;
+    mtgPrevBtn.style.opacity = mtgPage === 0 ? 0.35 : 1;
+    mtgNextBtn.style.opacity = mtgPage === mtgPageCount - 1 ? 0.35 : 1;
+    mtgLabel.textContent = (mtgPage + 1) + ' / ' + mtgPageCount;
+  }
+    mtgPrevBtn.addEventListener('click', function () {
+      mtgPage = Math.max(0, mtgPage - 1);
+      renderMtg();
+    });
+    mtgNextBtn.addEventListener('click', function () {
+      mtgPage = Math.min(mtgPageCount - 1, mtgPage + 1);
+      renderMtg();
+    });
+    renderMtg();
+  }
+
+ var testRoot = document.querySelector('[data-testimonials]');
   if (testRoot) {
     var testimonials = [
       {
@@ -124,84 +149,84 @@
         bg: '#207028', fg: '#F8F9F2', quoteColor: '#E7F1E7', border: 'none',
         avatarBg: 'rgba(248,249,242,0.18)', avatarColor: '#D9E8D9', roleColor: '#CDE7CF'
       }
-    ];
+      ];
 
-    var testTrack = testRoot.querySelector('[data-test-track]');
+  var testTrack = testRoot.querySelector('[data-test-track]');
     var testDots = testRoot.querySelector('[data-test-dots]');
     var testPrevBtn = testRoot.querySelector('[data-test-prev]');
     var testNextBtn = testRoot.querySelector('[data-test-next]');
     var perPage1Btn = testRoot.querySelector('[data-test-perpage1]');
     var perPage2Btn = testRoot.querySelector('[data-test-perpage2]');
 
-    var state = { index: 0, perPage: 2 };
+  var state = { index: 0, perPage: 2 };
 
-    function pageCount() { return Math.ceil(testimonials.length / state.perPage); }
+  function pageCount() { return Math.ceil(testimonials.length / state.perPage); }
     function clampIndex(i) {
       var pc = pageCount();
       return ((i % pc) + pc) % pc;
     }
 
-    function cardHtml(card) {
-      return (
-        '<div class="test-card" style="background:' + card.bg + '; color:' + card.fg + '; border:' + card.border + ';">' +
-          '<div class="test-stars">★★★★★</div>' +
-          '<div class="test-quote" style="color:' + card.quoteColor + ';">' + card.quote + '</div>' +
-          '<div class="test-person">' +
-            '<div class="test-avatar" style="background:' + card.avatarBg + '; color:' + card.avatarColor + ';">Photo</div>' +
-            '<div>' +
-              '<div class="test-name">' + card.name + '</div>' +
-              '<div class="test-role" style="color:' + card.roleColor + ';">' + card.role + '</div>' +
-            '</div>' +
-          '</div>' +
-        '</div>'
+  function cardHtml(card) {
+    return (
+      '<div class="test-card" style="background:' + card.bg + '; color:' + card.fg + '; border:' + card.border + ';">' +
+      '<div class="test-stars">★★★★★</div>' +
+      '<div class="test-quote" style="color:' + card.quoteColor + ';">' + card.quote + '</div>' +
+      '<div class="test-person">' +
+      '<div class="test-avatar" style="background:' + card.avatarBg + '; color:' + card.avatarColor + ';">Photo</div>' +
+      '<div>' +
+      '<div class="test-name">' + card.name + '</div>' +
+      '<div class="test-role" style="color:' + card.roleColor + ';">' + card.role + '</div>' +
+      '</div>' +
+      '</div>' +
+      '</div>'
       );
+  }
+
+  function render() {
+    var pc = pageCount();
+    var pages = [];
+    for (var i = 0; i < pc; i++) {
+      var start = i * state.perPage;
+      var cards = testimonials.slice(start, start + state.perPage);
+      while (cards.length < state.perPage) cards.push(cards[0]);
+      pages.push(cards);
     }
 
-    function render() {
-      var pc = pageCount();
-      var pages = [];
-      for (var i = 0; i < pc; i++) {
-        var start = i * state.perPage;
-        var cards = testimonials.slice(start, start + state.perPage);
-        while (cards.length < state.perPage) cards.push(cards[0]);
-        pages.push(cards);
-      }
-
-      testTrack.style.width = (pc * 100) + '%';
-      testTrack.innerHTML = pages.map(function (cards) {
-        var gridTemplate = state.perPage === 1 ? '1fr' : '1fr 1fr';
-        return (
-          '<div class="test-page" style="width:' + (100 / pc) + '%; grid-template-columns:' + gridTemplate + ';">' +
-            cards.map(cardHtml).join('') +
-          '</div>'
+    testTrack.style.width = (pc * 100) + '%';
+    testTrack.innerHTML = pages.map(function (cards) {
+      var gridTemplate = state.perPage === 1 ? '1fr' : '1fr 1fr';
+      return (
+        '<div class="test-page" style="width:' + (100 / pc) + '%; grid-template-columns:' + gridTemplate + ';">' +
+        cards.map(cardHtml).join('') +
+        '</div>'
         );
-      }).join('');
-      testTrack.style.transform = 'translateX(-' + (state.index * (100 / pc)) + '%)';
+    }).join('');
+    testTrack.style.transform = 'translateX(-' + (state.index * (100 / pc)) + '%)';
 
-      testDots.innerHTML = '';
-      for (var d = 0; d < pc; d++) {
-        var dot = document.createElement('button');
-        dot.setAttribute('aria-label', 'Go to slide ' + (d + 1));
-        dot.style.background = d === state.index ? '#207028' : '#DAD6C4';
-        (function (idx) {
-          dot.addEventListener('click', function () {
-            state.index = idx;
-            render();
-          });
-        })(d);
-        testDots.appendChild(dot);
-      }
-
-      perPage1Btn.style.background = state.perPage === 1 ? '#207028' : 'transparent';
-      perPage1Btn.style.color = state.perPage === 1 ? '#F8F9F2' : '#33352F';
-      perPage2Btn.style.background = state.perPage === 2 ? '#207028' : 'transparent';
-      perPage2Btn.style.color = state.perPage === 2 ? '#F8F9F2' : '#33352F';
+    testDots.innerHTML = '';
+    for (var d = 0; d < pc; d++) {
+      var dot = document.createElement('button');
+      dot.setAttribute('aria-label', 'Go to slide ' + (d + 1));
+      dot.style.background = d === state.index ? '#207028' : '#DAD6C4';
+      (function (idx) {
+        dot.addEventListener('click', function () {
+          state.index = idx;
+          render();
+        });
+      })(d);
+      testDots.appendChild(dot);
     }
 
-    testPrevBtn.addEventListener('click', function () {
-      state.index = clampIndex(state.index - 1);
-      render();
-    });
+    perPage1Btn.style.background = state.perPage === 1 ? '#207028' : 'transparent';
+    perPage1Btn.style.color = state.perPage === 1 ? '#F8F9F2' : '#33352F';
+    perPage2Btn.style.background = state.perPage === 2 ? '#207028' : 'transparent';
+    perPage2Btn.style.color = state.perPage === 2 ? '#F8F9F2' : '#33352F';
+  }
+
+  testPrevBtn.addEventListener('click', function () {
+    state.index = clampIndex(state.index - 1);
+    render();
+  });
     testNextBtn.addEventListener('click', function () {
       state.index = clampIndex(state.index + 1);
       render();
@@ -217,6 +242,6 @@
       render();
     });
 
-    render();
+  render();
   }
 })();
