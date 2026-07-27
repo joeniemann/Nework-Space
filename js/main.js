@@ -68,12 +68,18 @@
     var memPrevBtn = document.querySelector('[data-mem-prev]');
     var memNextBtn = document.querySelector('[data-mem-next]');
     var memLabel = document.querySelector('[data-mem-page-label]');
+    var memViewport = memTrack.parentElement;
 
-  memTrack.style.width = (memPageCount * 100) + '%';
-    memPages.forEach(function (p) { p.style.flexBasis = (100 / memPageCount) + '%'; });
+  function sizeMem() {
+    var w = Math.round(memViewport.getBoundingClientRect().width);
+    memTrack.style.width = (w * memPageCount) + 'px';
+    memPages.forEach(function (p) { p.style.flexBasis = w + 'px'; p.style.width = w + 'px'; });
+    memTrack.style.transform = 'translateX(-' + (memPage * w) + 'px)';
+  }
 
   function renderMem() {
-    memTrack.style.transform = 'translateX(-' + (memPage * (100 / memPageCount)) + '%)';
+    var w = Math.round(memViewport.getBoundingClientRect().width);
+    memTrack.style.transform = 'translateX(-' + (memPage * w) + 'px)';
     memPrevBtn.disabled = memPage === 0;
     memNextBtn.disabled = memPage === memPageCount - 1;
     memPrevBtn.style.opacity = memPage === 0 ? 0.35 : 1;
@@ -88,7 +94,9 @@
       memPage = Math.min(memPageCount - 1, memPage + 1);
       renderMem();
     });
+    sizeMem();
     renderMem();
+    window.addEventListener('resize', sizeMem);
   }
 
  var mtgTrack = document.querySelector('[data-mtg-track]');
@@ -99,12 +107,18 @@
     var mtgPrevBtn = document.querySelector('[data-mtg-prev]');
     var mtgNextBtn = document.querySelector('[data-mtg-next]');
     var mtgLabel = document.querySelector('[data-mtg-page-label]');
+    var mtgViewport = mtgTrack.parentElement;
 
-  mtgTrack.style.width = (mtgPageCount * 100) + '%';
-    mtgPages.forEach(function (p) { p.style.flexBasis = (100 / mtgPageCount) + '%'; });
+  function sizeMtg() {
+    var w = Math.round(mtgViewport.getBoundingClientRect().width);
+    mtgTrack.style.width = (w * mtgPageCount) + 'px';
+    mtgPages.forEach(function (p) { p.style.flexBasis = w + 'px'; p.style.width = w + 'px'; });
+    mtgTrack.style.transform = 'translateX(-' + (mtgPage * w) + 'px)';
+  }
 
   function renderMtg() {
-    mtgTrack.style.transform = 'translateX(-' + (mtgPage * (100 / mtgPageCount)) + '%)';
+    var w = Math.round(mtgViewport.getBoundingClientRect().width);
+    mtgTrack.style.transform = 'translateX(-' + (mtgPage * w) + 'px)';
     mtgPrevBtn.disabled = mtgPage === 0;
     mtgNextBtn.disabled = mtgPage === mtgPageCount - 1;
     mtgPrevBtn.style.opacity = mtgPage === 0 ? 0.35 : 1;
@@ -119,7 +133,9 @@
       mtgPage = Math.min(mtgPageCount - 1, mtgPage + 1);
       renderMtg();
     });
+    sizeMtg();
     renderMtg();
+    window.addEventListener('resize', sizeMtg);
   }
 
  var testRoot = document.querySelector('[data-testimonials]');
